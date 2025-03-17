@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araç Yıkama WhatsApp Mesajı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #25D366;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #128C7E;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Araç Yıkama WhatsApp Mesajı</h1>
+        <form id="whatsappForm">
+            <label for="phone">Telefon Numarası:</label>
+            <input type="text" id="phone" name="phone" placeholder="+901234567890" required>
+            
+            <label for="message">Mesaj:</label>
+            <textarea id="message" name="message" placeholder="Aracınız hazır." required></textarea>
+            
+            <button type="submit">Mesajı Hazırla ve Gönder</button>
+        </form>
+        <div class="footer">
+            <p>Web sitesi tarafından oluşturulmuştur.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappLink = `https://wa.me/${phone}?text=${encodedMessage}`;
+
+            window.open(whatsappLink, '_blank');
+        });
+    </script>
+</body>
+</html>
